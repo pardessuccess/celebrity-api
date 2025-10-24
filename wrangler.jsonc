@@ -1,0 +1,31 @@
+/**
+ * For more details on how to configure Wrangler, refer to:
+ * https://developers.cloudflare.com/workers/wrangler/configuration/
+ */
+{
+	"$schema": "node_modules/wrangler/config-schema.json",
+	"name": "celebrity-api",
+	"main": "src/index.ts",
+	"compatibility_date": "2025-08-10",
+	"observability": {
+		"enabled": true
+	},
+	"r2_buckets": [
+		{
+			"binding": "bucket",
+			"bucket_name": "r2-celebrities"
+		}
+	],
+	"routes": [
+		{
+			"pattern": "api.evermiss.co.kr/celebrity/*",
+			"zone_name": "evermiss.co.kr"
+		}
+	],
+	"kv_namespaces": [
+		{
+			"binding": "KV",
+			"id": "29fcae9f0e4140d29ec1f5619bc4b846"
+		}
+	]
+}
